@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function setUniColor(R, G, B) { //decide which value of rgb to change
         if (R === "newValue") {
             R = prompt(`輸入0~255`, `${rValue}`); //assign user input value to RGB
-            if (!isNaN(R) && 255 >= R && R >= 0) { //limit user input value to integers between 0 and 255
+            if (!isNaN(R) && 255 >= R && R >= 0 && R % 1 == 0) { //limit user input value to integers between 0 and 255
                 rValue = R;
             } else {
                 alert(`您未輸入0~255間的整數`);
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         } else if (G === "newValue") {
             G = prompt(`輸入0~255`, `${gValue}`);
-            if (!isNaN(G) && 255 >= G && G >= 0) {
+            if (!isNaN(G) && 255 >= G && G >= 0 && G % 1 == 0) {
                 gValue = G;
             } else {
                 alert(`您未輸入0~255間的整數`);
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         } else {
             B = prompt(`輸入0~255`, `${bValue}`);
-            if (!isNaN(B) && 255 >= B && B >= 0) {
+            if (!isNaN(B) && 255 >= B && B >= 0 && B % 1 == 0) {
                 bValue = B;
             } else {
                 alert(`您未輸入0~255間的整數`);
