@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let rValue = rand();
     let gValue = rand();
     let bValue = rand();
+    let randInterval;
 
     /* functions */
     function rand() { //generate a random number ranging from 0 to 255
@@ -62,6 +63,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         setColor(); //assign new rgb values to the rectangle's background-color
     }
+    function initRandBtn() { //start random color change
+        randInterval = setInterval(() => {
+            rValue = rand();
+            gValue = rand();
+            bValue = rand();
+            setColor();
+        }, 30);
+    }
+    function clrRandBtn() { //stop random color change
+        clearInterval(randInterval);
+    }
 
     /* events */
     rBtn.addEventListener("click", () => { //newValue act as a key to let function identify which button is clicked
@@ -73,6 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
     bBtn.addEventListener("click", () => {
         setUniColor(null, null, "newValue");
     });
+    qBtn.addEventListener("mousedown", initRandBtn);
+    qBtn.addEventListener("mouseup", clrRandBtn);
+    qBtn.addEventListener("mouseout", clrRandBtn);
 
     setColor(); //generate random color on page reload
 });
