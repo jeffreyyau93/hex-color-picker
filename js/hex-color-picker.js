@@ -15,8 +15,24 @@ document.addEventListener("DOMContentLoaded", () => {
     function rand() { //generate a random number ranging from 0 to 255
         return Math.floor(Math.random() * 256);
     }
-    function setColor() { //assign new color values to the main rectangle
+    function decimalToHex(num) { //convert a decimal number to hexadecimal one
+        let hex = Number(num).toString(16);
+        if (hex.length < 2) {
+            hex = "0" + hex;
+        }
+        return hex;
+    }
+    function rgbCodeToHex(R, G, B) { //covert rgb code to hexadecimal color code
+        let red = decimalToHex(R);
+        let green = decimalToHex(G);
+        let blue = decimalToHex(B);
+        return red + green + blue;
+    }
+    function setColor() { //assign new color values to the colored rectangle and the displayed color code
+        let hexValue = rgbCodeToHex(rValue, gValue, bValue);
         rectangle.style.backgroundColor = `rgb(${rValue}, ${gValue}, ${bValue})`;
+        rectangle.textContent = `#${hexValue.toUpperCase()}`; //show an uppercased hexadecimal color code
+        rectangle.style.color = `rgb(${255 - rValue}, ${255 - gValue}, ${255 - bValue})`; //give displayed color code a contrast color of the rectangle's background
     }
     function setUniColor(R, G, B) { //decide which value of rgb to change
         if (R === "newValue") {
