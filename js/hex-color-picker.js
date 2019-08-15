@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let rBtn = document.getElementById("btn-r");
     let gBtn = document.getElementById("btn-g");
     let bBtn = document.getElementById("btn-b");
+    let rSlider = document.getElementById("rSlider");
+    let gSlider = document.getElementById("gSlider");
+    let bSlider = document.getElementById("bSlider");
     let pBtn = document.getElementById("btn-p");
     let mBtn = document.getElementById("btn-m");
     let qBtn = document.getElementById("btn-q");
@@ -34,6 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
         rectangle.style.backgroundColor = `rgb(${rValue}, ${gValue}, ${bValue})`;
         rectangle.textContent = `#${hexValue.toUpperCase()}`; //show an uppercased hexadecimal color code
         rectangle.style.color = `rgb(${255 - rValue}, ${255 - gValue}, ${255 - bValue})`; //give displayed color code a contrast color of the rectangle's background
+        rSlider.value = rValue; //sliders' appearances reflect current background-color of the rectangle
+        gSlider.value = gValue;
+        bSlider.value = bValue;
     }
     function setUniColor(R, G, B) { //decide which value of rgb to change
         if (R === "newValue") {
@@ -63,6 +69,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         setColor(); //assign new rgb values to the rectangle's background-color
     }
+    function initSlider() { //r, g, b sliders' values to affect rectangle's background-color
+        rValue = rSlider.value;
+        gValue = gSlider.value;
+        bValue = bSlider.value;
+        setColor();
+    }
     function initRandBtn() { //start random color change
         randInterval = setInterval(() => {
             rValue = rand();
@@ -85,6 +97,9 @@ document.addEventListener("DOMContentLoaded", () => {
     bBtn.addEventListener("click", () => {
         setUniColor(null, null, "newValue");
     });
+    rSlider.addEventListener("input", initSlider);
+    gSlider.addEventListener("input", initSlider);
+    bSlider.addEventListener("input", initSlider);
     qBtn.addEventListener("mousedown", initRandBtn);
     qBtn.addEventListener("mouseup", clrRandBtn);
     qBtn.addEventListener("mouseout", clrRandBtn);
