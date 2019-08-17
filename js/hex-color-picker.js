@@ -10,10 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let pBtn = document.getElementById("btn-p");
     let mBtn = document.getElementById("btn-m");
     let qBtn = document.getElementById("btn-q");
+    let plusInterval;
+    let minusInterval;
+    let randInterval;
     let rValue = rand();
     let gValue = rand();
     let bValue = rand();
-    let randInterval;
 
     /* functions */
     function rand() { //generate a random number ranging from 0 to 255
@@ -75,6 +77,46 @@ document.addEventListener("DOMContentLoaded", () => {
         bValue = bSlider.value;
         setColor();
     }
+    function initPlusBtn() { //start incrementing
+        plusInterval = setInterval(() => {
+            if (rValue < 255) {
+                rValue ++;
+            }
+            if (gValue < 255) {
+                gValue ++;
+            }
+            if (bValue < 255) {
+                bValue ++;
+            }
+            setColor();
+            if (rValue == 255 && gValue == 255 && bValue == 255) {
+                clearInterval(plusInterval);
+            }
+        }, 30);
+    }
+    function clrPlusBtn() { //stop incrementing
+        clearInterval(plusInterval);
+    }
+    function initMinusBtn() { //start decrementing
+        minusInterval = setInterval(() => {
+            if (rValue > 0) {
+                rValue --;
+            }
+            if (gValue > 0) {
+                gValue --;
+            }
+            if (bValue > 0) {
+                bValue --;
+            }
+            setColor();
+            if (rValue == 0 && gValue == 0 && bValue == 0) {
+                clearInterval(plusInterval);
+            }
+        }, 30);
+    }
+    function clrMinusBtn() { //stop decrementing
+        clearInterval(minusInterval);
+    }
     function initRandBtn() { //start random color change
         randInterval = setInterval(() => {
             rValue = rand();
@@ -100,6 +142,12 @@ document.addEventListener("DOMContentLoaded", () => {
     rSlider.addEventListener("input", initSlider);
     gSlider.addEventListener("input", initSlider);
     bSlider.addEventListener("input", initSlider);
+    pBtn.addEventListener("mousedown", initPlusBtn);
+    pBtn.addEventListener("mouseup", clrPlusBtn);
+    pBtn.addEventListener("mouseout", clrPlusBtn);
+    mBtn.addEventListener("mousedown", initMinusBtn);
+    mBtn.addEventListener("mouseup", clrMinusBtn);
+    mBtn.addEventListener("mouseout", clrMinusBtn);
     qBtn.addEventListener("mousedown", initRandBtn);
     qBtn.addEventListener("mouseup", clrRandBtn);
     qBtn.addEventListener("mouseout", clrRandBtn);
