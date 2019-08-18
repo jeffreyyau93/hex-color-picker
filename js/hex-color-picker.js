@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let pBtn = document.getElementById("btn-p");
     let mBtn = document.getElementById("btn-m");
     let qBtn = document.getElementById("btn-q");
+    let cBtn = document.getElementById("btn-c");
     let plusInterval;
     let minusInterval;
     let randInterval;
@@ -128,6 +129,15 @@ document.addEventListener("DOMContentLoaded", () => {
     function clrRandBtn() { //stop random color change
         clearInterval(randInterval);
     }
+    function copyColor() { //copy color code on the rectangle to clipboard
+        let temp = document.createElement("input");
+        temp.type = "text";
+        temp.value = rectangle.textContent;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand("copy");
+        temp.remove();
+    }
 
     /* events */
     rBtn.addEventListener("click", () => { //newValue act as a key to let function identify which button is clicked
@@ -151,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
     qBtn.addEventListener("mousedown", initRandBtn);
     qBtn.addEventListener("mouseup", clrRandBtn);
     qBtn.addEventListener("mouseout", clrRandBtn);
+    cBtn.addEventListener("click", copyColor);
 
     setColor(); //generate random color on page reload
 });
