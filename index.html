@@ -8,24 +8,33 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" defer></script>
     <title>Hex Color Picker</title>
+    <style id="css"></style>
 </head>
 
 <body>
-    <div id="rect"></div>
-    <br>
-    <input type="button" value="R" id="btn-r" class="btn">
-    <input type="range" min="0" max="255" step="1" id="rSlider">
-    <br>
-    <input type="button" value="G" id="btn-g" class="btn">
-    <input type="range" min="0" max="255" step="1" id="gSlider">
-    <br>
-    <input type="button" value="B" id="btn-b" class="btn">
-    <input type="range" min="0" max="255" step="1" id="bSlider">
-    <br><br>
-    <input type="button" value="+" id="btn-p">
-    <input type="button" value="-" id="btn-m">
-    <input type="button" value="?" id="btn-q">
-    <input type="button" value="copy" id="btn-c">
+    <div id="container">
+        <!-- <div id="rect"></div> -->
+        <br>
+        <div id="hexagon"></div>
+        <br>
+        <div>
+            <input type="button" value="R" id="btn-r" class="btn">
+            <input type="range" min="0" max="255" step="1" id="rSlider">
+            <br>
+            <input type="button" value="G" id="btn-g" class="btn">
+            <input type="range" min="0" max="255" step="1" id="gSlider">
+            <br>
+            <input type="button" value="B" id="btn-b" class="btn">
+            <input type="range" min="0" max="255" step="1" id="bSlider">
+        </div>
+        <br><br>
+        <div>
+            <input type="button" value="+" id="btn-p">
+            <input type="button" value="-" id="btn-m">
+            <input type="button" value="?" id="btn-q">
+            <input type="button" value="copy" id="btn-c">
+        </div>
+    </div>
 </body>
 
 </html>

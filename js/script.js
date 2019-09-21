@@ -1,5 +1,9 @@
 /* global variables */
-let rectangle = document.getElementById("rect");
+let hexagon = document.getElementById("hexagon");
+let css = document.getElementById("css");
+// let c = css.offsetHeight;
+// c.insertRule("#hexagon#hexagon::before{background-color: black;}", 0);
+// let hexagonTop = window.getComputedStyle(hexagon, "::before");
 let rBtn = document.getElementById("btn-r");
 let gBtn = document.getElementById("btn-g");
 let bBtn = document.getElementById("btn-b");
@@ -34,12 +38,13 @@ function rgbCodeToHex(R, G, B) { //covert rgb code to hexadecimal color code
     let blue = decimalToHex(B);
     return red + green + blue;
 }
-function setColor() { //assign new color values to the colored rectangle and the displayed color code
+function setColor() { //assign new color values to the colored hexagon and the displayed color code
     let hexValue = rgbCodeToHex(rValue, gValue, bValue);
-    rectangle.style.backgroundColor = `rgb(${rValue}, ${gValue}, ${bValue})`;
-    rectangle.textContent = `#${hexValue.toUpperCase()}`; //show an uppercased hexadecimal color code
-    rectangle.style.color = `rgb(${255 - rValue}, ${255 - gValue}, ${255 - bValue})`; //give displayed color code a contrast color of the rectangle's background
-    rSlider.value = rValue; //sliders' appearances reflect current background-color of the rectangle
+    hexagon.style.backgroundColor = `rgb(${rValue}, ${gValue}, ${bValue})`;
+    // hexagon.before.style.backgroundColor = `rgb(${rValue}, ${gValue}, ${bValue})`;
+    hexagon.textContent = `#${hexValue.toUpperCase()}`; //show an uppercased hexadecimal color code
+    hexagon.style.color = `rgb(${255 - rValue}, ${255 - gValue}, ${255 - bValue})`; //give displayed color code a contrast color of the hexagon's background
+    rSlider.value = rValue; //sliders' appearances reflect current background-color of the hexagon
     gSlider.value = gValue;
     bSlider.value = bValue;
 }
@@ -69,9 +74,9 @@ function setUniColor(R, G, B) { //decide which value of rgb to change
             return;
         }
     }
-    setColor(); //assign new rgb values to the rectangle's background-color
+    setColor(); //assign new rgb values to the hexagon's background-color
 }
-function initSlider() { //r, g, b sliders' values to affect rectangle's background-color
+function initSlider() { //r, g, b sliders' values to affect hexagon's background-color
     rValue = rSlider.value;
     gValue = gSlider.value;
     bValue = bSlider.value;
@@ -128,10 +133,10 @@ function initRandBtn() { //start random color change
 function clrRandBtn() { //stop random color change
     clearInterval(randInterval);
 }
-function copyColor() { //copy color code on the rectangle to clipboard
+function copyColor() { //copy color code on the hexagon to clipboard
     let temp = document.createElement("input");
     temp.type = "text";
-    temp.value = rectangle.textContent;
+    temp.value = hexagon.textContent;
     document.body.appendChild(temp);
     temp.select();
     document.execCommand("copy");
