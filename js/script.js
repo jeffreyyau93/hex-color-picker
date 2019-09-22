@@ -22,6 +22,27 @@ let gValue = rand();
 let bValue = rand();
 
 /* functions */
+let UID = {
+	_current: 0,
+	getNew: function() {
+		this._current ++;
+		return this._current;
+	}
+};
+HTMLElement.prototype.pseudoStyle = function(element, prop, value) {
+    // hexagon.classList = "";
+    let _this = this;
+	let _sheetId = "pseudoStyles";
+	let _head = document.head || document.getElementsByTagName("head")[0];
+	let _sheet = document.getElementById(_sheetId) || document.createElement("style");
+	_sheet.id = _sheetId;
+	let className = `pseudoStyle${UID.getNew()}`;
+	_this.className += ` ${className}`; 
+	_sheet.innerHTML += ` .${className}:${element}{${prop}:${value}}`;
+	_head.appendChild(_sheet);
+	return this;
+};
+
 function rand() { //generate a random number ranging from 0 to 255
     return Math.floor(Math.random() * 256);
 }
@@ -41,7 +62,8 @@ function rgbCodeToHex(R, G, B) { //covert rgb code to hexadecimal color code
 function setColor() { //assign new color values to the colored hexagon and the displayed color code
     let hexValue = rgbCodeToHex(rValue, gValue, bValue);
     hexagon.style.backgroundColor = `rgb(${rValue}, ${gValue}, ${bValue})`;
-    // hexagon.before.style.backgroundColor = `rgb(${rValue}, ${gValue}, ${bValue})`;
+    hexagon.pseudoStyle("before", "border-bottom", `86.6px solid #${hexValue} !important`);
+    hexagon.pseudoStyle("after", "border-top", `86.6px solid #${hexValue} !important`);
     hexagon.textContent = `#${hexValue.toUpperCase()}`; //show an uppercased hexadecimal color code
     hexagon.style.color = `rgb(${255 - rValue}, ${255 - gValue}, ${255 - bValue})`; //give displayed color code a contrast color of the hexagon's background
     rSlider.value = rValue; //sliders' appearances reflect current background-color of the hexagon

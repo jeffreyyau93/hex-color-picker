@@ -27,8 +27,11 @@ body {
     /* background-color: #64c7cc; */
     margin: 86.6px 0;
     /* text-align: center; */
-    /* line-height: 300px; */
+    /* line-height: 173.21px; */
     font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #hexagon::before,
@@ -42,11 +45,11 @@ body {
 
 #hexagon::before {
     bottom: 100%;
-    border-bottom: 86.6px solid #64c7cc;
+    /* border-bottom: 86.6px solid #64c7cc; */
 }
 
 #hexagon::after {
     top: 100%;
-    width: 0;
-    border-top: 86.6px solid #64c7cc;
+    /* width: 0; */
+    /* border-top: 86.6px solid #64c7cc; */
 }
