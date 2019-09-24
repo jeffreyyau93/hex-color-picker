@@ -8,6 +8,11 @@ body {
     justify-content: center;
     align-items: center;
 }
+h1 {
+    color: #fff;
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+}
 
 #container {
     position: absolute;
@@ -67,7 +72,7 @@ body {
     border: 2px solid #00f;
 }
 #btn-c {
-    width: 73px !important;
+    /* width: 73px !important; */
 }
 .btn {
     background: transparent;
@@ -91,10 +96,20 @@ body {
 .mb-1 {
     margin-bottom: 1rem; 
 }
+.mb-9 {
+    margin-bottom: 9rem;
+}
 .my-2 {
     margin-top: 7rem;
     margin-bottom: 2rem;
 }
+.material-icons:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.3) !important;
+}
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
 
 /* slider block */
 input[type="range"] {
