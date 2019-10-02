@@ -1,48 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style.css" />
     <script src="js/script.js" defer></script>
     <title>Hex Color Picker</title>
     <!-- <style id="css"></style> -->
-</head>
-
-<body>
+  </head>
+  <body>
     <div id="container">
-        <h1 class="mb-9">HEX&nbsp;&nbsp;COLOR&nbsp;&nbsp;PICKER</h1>
-        <!-- <div id="rect"></div> -->
-        <div id="hexagon"></div>
-        <div id="rgb-channel" class="my-2">
-            <div id="r-channel" class="space-between mb-1">
-                <input type="button" value="R" id="btn-r" class="btn">
-                <input type="range" min="0" max="255" step="1" id="rSlider">
-            </div>
-            <div id="g-channel" class="space-between mb-1">
-                <input type="button" value="G" id="btn-g" class="btn">
-                <input type="range" min="0" max="255" step="1" id="gSlider">
-            </div>
-            <div id="b-channel" class="space-between mb-1">
-                <input type="button" value="B" id="btn-b" class="btn">
-                <input type="range" min="0" max="255" step="1" id="bSlider">
-            </div>
+      <h1 class="mb-9">HEX&nbsp;&nbsp;COLOR&nbsp;&nbsp;PICKER</h1>
+      <!-- <div id="rect"></div> -->
+      <div id="hexagon"></div>
+      <div id="rgb-channel" class="my-2">
+        <div id="r-channel" class="space-between mb-1">
+          <input type="button" value="R" id="btn-r" class="btn" />
+          <input type="range" min="0" max="255" step="1" id="rSlider" />
         </div>
-        <div id="function" class="space-between">
-            <!-- <input type="button" value="+" id="btn-p" class="btn btn-white">
+        <div id="g-channel" class="space-between mb-1">
+          <input type="button" value="G" id="btn-g" class="btn" />
+          <input type="range" min="0" max="255" step="1" id="gSlider" />
+        </div>
+        <div id="b-channel" class="space-between mb-1">
+          <input type="button" value="B" id="btn-b" class="btn" />
+          <input type="range" min="0" max="255" step="1" id="bSlider" />
+        </div>
+      </div>
+      <div id="function" class="space-between">
+        <!-- <input type="button" value="+" id="btn-p" class="btn btn-white">
             <input type="button" value="-" id="btn-m" class="btn btn-white">
             <input type="button" value="?" id="btn-q" class="btn btn-white"> -->
-            <i id="btn-p" class="material-icons md-36 md-light">add_circle_outline</i>
-            <i id="btn-m" class="material-icons md-36 md-light">remove_circle_outline</i>
-            <i id="btn-q" class="material-icons md-36 md-light">refresh</i>
-            <i id="btn-c" class="material-icons md-36 md-light">file_copy</i>
-        </div>
+        <i id="btn-p" class="material-icons md-36 md-light"
+          >add_circle_outline</i
+        >
+        <i id="btn-m" class="material-icons md-36 md-light"
+          >remove_circle_outline</i
+        >
+        <i id="btn-q" class="material-icons md-36 md-light">refresh</i>
+        <i id="btn-c" class="material-icons md-36 md-light">file_copy</i>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
