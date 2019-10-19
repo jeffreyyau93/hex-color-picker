@@ -91,6 +91,7 @@ h1 {
   width: 36px;
   height: 36px;
   border-radius: 10px;
+  outline: none;
 }
 
 .btn-white {

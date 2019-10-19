@@ -1,19 +1,19 @@
-/* global variables */
-let hexagon = document.getElementById("hexagon");
-let css = document.getElementById("css");
+/* Global Variables */
+const hexagon = document.getElementById("hexagon");
+// const css = document.getElementById("css");
 // let c = css.offsetHeight;
 // c.insertRule("#hexagon#hexagon::before{background-color: black;}", 0);
 // let hexagonTop = window.getComputedStyle(hexagon, "::before");
-let rBtn = document.getElementById("btn-r");
-let gBtn = document.getElementById("btn-g");
-let bBtn = document.getElementById("btn-b");
-let rSlider = document.getElementById("rSlider");
-let gSlider = document.getElementById("gSlider");
-let bSlider = document.getElementById("bSlider");
-let pBtn = document.getElementById("btn-p");
-let mBtn = document.getElementById("btn-m");
-let qBtn = document.getElementById("btn-q");
-let cBtn = document.getElementById("btn-c");
+const rBtn = document.getElementById("btn-r");
+const gBtn = document.getElementById("btn-g");
+const bBtn = document.getElementById("btn-b");
+const rSlider = document.getElementById("rSlider");
+const gSlider = document.getElementById("gSlider");
+const bSlider = document.getElementById("bSlider");
+const pBtn = document.getElementById("btn-p");
+const mBtn = document.getElementById("btn-m");
+const qBtn = document.getElementById("btn-q");
+const cBtn = document.getElementById("btn-c");
 let plusInterval;
 let minusInterval;
 let randInterval;
@@ -22,7 +22,7 @@ let gValue = rand();
 let bValue = rand();
 
 /* functions */
-let UID = {
+const UID = {
   _current: 0,
   getNew: function() {
     this._current++;
@@ -31,13 +31,13 @@ let UID = {
 };
 HTMLElement.prototype.pseudoStyle = function(element, prop, value) {
   // hexagon.classList = "";
-  let _this = this;
-  let _sheetId = "pseudoStyles";
-  let _head = document.head || document.getElementsByTagName("head")[0];
-  let _sheet =
+  const _this = this;
+  const _sheetId = "pseudoStyles";
+  const _head = document.head || document.getElementsByTagName("head")[0];
+  const _sheet =
     document.getElementById(_sheetId) || document.createElement("style");
   _sheet.id = _sheetId;
-  let className = `pseudoStyle${UID.getNew()}`;
+  const className = `pseudoStyle${UID.getNew()}`;
   _this.className += ` ${className}`;
   _sheet.innerHTML += ` .${className}:${element}{${prop}:${value}}`;
   _head.appendChild(_sheet);
@@ -45,11 +45,11 @@ HTMLElement.prototype.pseudoStyle = function(element, prop, value) {
 };
 
 function rand() {
-  //generate a random number ranging from 0 to 255
+  // Generate a random number ranging from 0 to 255
   return Math.floor(Math.random() * 256);
 }
 function decimalToHex(num) {
-  //convert a decimal number to hexadecimal one
+  // Convert a decimal number to hexadecimal one
   let hex = Number(num).toString(16);
   if (hex.length < 2) {
     hex = "0" + hex;
@@ -57,15 +57,15 @@ function decimalToHex(num) {
   return hex;
 }
 function rgbCodeToHex(R, G, B) {
-  //covert rgb code to hexadecimal color code
-  let red = decimalToHex(R);
-  let green = decimalToHex(G);
-  let blue = decimalToHex(B);
+  // Covert rgb code to hexadecimal color code
+  const red = decimalToHex(R);
+  const green = decimalToHex(G);
+  const blue = decimalToHex(B);
   return red + green + blue;
 }
 function setColor() {
-  //assign new color values to the colored hexagon and the displayed color code
-  let hexValue = rgbCodeToHex(rValue, gValue, bValue);
+  // Assign new color values to the colored hexagon and the displayed color code
+  const hexValue = rgbCodeToHex(rValue, gValue, bValue);
   hexagon.style.backgroundColor = `rgb(${rValue}, ${gValue}, ${bValue})`;
   hexagon.pseudoStyle(
     "before",
@@ -77,19 +77,19 @@ function setColor() {
     "border-top",
     `86.6px solid #${hexValue} !important`
   );
-  hexagon.textContent = `#${hexValue.toUpperCase()}`; //show an uppercased hexadecimal color code
+  hexagon.textContent = `#${hexValue.toUpperCase()}`; // Show an uppercased hexadecimal color code
   hexagon.style.color = `rgb(${255 - rValue}, ${255 - gValue}, ${255 -
-    bValue})`; //give displayed color code a contrast color of the hexagon's background
-  rSlider.value = rValue; //sliders' appearances reflect current background-color of the hexagon
+    bValue})`; // Give displayed color code a contrast color of the hexagon's background
+  rSlider.value = rValue; // Sliders' appearances reflect current background-color of the hexagon
   gSlider.value = gValue;
   bSlider.value = bValue;
 }
 function setUniColor(R, G, B) {
-  //decide which value of rgb to change
+  // Decide which value of rgb to change
   if (R === "newValue") {
-    R = prompt(`輸入0~255`, `${rValue}`); //assign user input value to RGB
+    R = prompt(`輸入0~255`, `${rValue}`); // Assign user input value to RGB
     if (!isNaN(R) && 255 >= R && R >= 0 && R % 1 == 0) {
-      //limit user input value to integers between 0 and 255
+      // Limit user input value to integers between 0 and 255
       rValue = R;
     } else {
       alert(`您未輸入0~255間的整數`);
@@ -112,17 +112,17 @@ function setUniColor(R, G, B) {
       return;
     }
   }
-  setColor(); //assign new rgb values to the hexagon's background-color
+  setColor(); // Assign new rgb values to the hexagon's background-color
 }
 function initSlider() {
-  //r, g, b sliders' values to affect hexagon's background-color
+  // r, g, b sliders' values to affect hexagon's background-color
   rValue = rSlider.value;
   gValue = gSlider.value;
   bValue = bSlider.value;
   setColor();
 }
 function initPlusBtn() {
-  //start incrementing
+  // Start incrementing
   plusInterval = setInterval(() => {
     if (rValue < 255) {
       rValue++;
@@ -134,17 +134,17 @@ function initPlusBtn() {
       bValue++;
     }
     setColor();
-    if (rValue == 255 && gValue == 255 && bValue == 255) {
+    if (rValue === 255 && gValue === 255 && bValue === 255) {
       clearInterval(plusInterval);
     }
   }, 30);
 }
 function clrPlusBtn() {
-  //stop incrementing
+  // Stop incrementing
   clearInterval(plusInterval);
 }
 function initMinusBtn() {
-  //start decrementing
+  // Start decrementing
   minusInterval = setInterval(() => {
     if (rValue > 0) {
       rValue--;
@@ -162,11 +162,11 @@ function initMinusBtn() {
   }, 30);
 }
 function clrMinusBtn() {
-  //stop decrementing
+  // Stop decrementing
   clearInterval(minusInterval);
 }
 function initRandBtn() {
-  //start random color change
+  // Start random color change
   randInterval = setInterval(() => {
     rValue = rand();
     gValue = rand();
@@ -175,12 +175,12 @@ function initRandBtn() {
   }, 30);
 }
 function clrRandBtn() {
-  //stop random color change
+  // Stop random color change
   clearInterval(randInterval);
 }
 function copyColor() {
-  //copy color code on the hexagon to clipboard
-  let temp = document.createElement("input");
+  // Copy color code on the hexagon to clipboard
+  const temp = document.createElement("input");
   temp.type = "text";
   temp.value = hexagon.textContent;
   document.body.appendChild(temp);
@@ -191,7 +191,7 @@ function copyColor() {
 
 /* events */
 rBtn.addEventListener("click", () => {
-  //newValue act as a key to let function identify which button is clicked
+  // NewValue act as a key to let function identify which button is clicked
   setUniColor("newValue", null, null);
 });
 gBtn.addEventListener("click", () => {
@@ -214,4 +214,4 @@ qBtn.addEventListener("mouseup", clrRandBtn);
 qBtn.addEventListener("mouseout", clrRandBtn);
 cBtn.addEventListener("click", copyColor);
 
-setColor(); //generate random color on page reload
+setColor(); // Generate random color on page reload
